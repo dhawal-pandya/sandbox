@@ -1,0 +1,55 @@
+customerTable
+name, dob, customerStatus, ID
+
+one customer has more than one cards
+
+cardsTable
+cardNo, cardNetwork, cardStatus, customerID
+
+SELECT * FROM customerTable AS customers, LEFT JOIN cardsTable WHERE customers.ID = customerID ORDER BY customers.ID OFFSET offset LIMIT size
+
+Fetch all customers, with all card data
+URL:
+GET,
+customers/api/v0/cards/{name:string}/
+
+Request:
+Response:
+{
+    data:[
+       {
+            ID:
+            name:
+            dob:
+            customerStatus:
+            cards:[{
+                cardNo,
+                cardNetwork,
+                cardStatus
+            },
+            {
+                cardNo,
+                cardNetwork,
+                cardStatus
+            },
+            ]
+        },
+        {
+            ID:
+            name:
+            dob:
+            customerStatus:
+            cards:[{
+                cardNo,
+                cardNetwork,
+                cardStatus
+            }
+            ]
+        }
+    ],
+    page:{
+        offset,
+        size,
+        hasNext
+    }
+}
